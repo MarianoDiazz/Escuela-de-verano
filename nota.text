@@ -1,0 +1,1328 @@
+import React, { useState, useEffect } from "react";
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  Button,
+  Form,
+  Accordion,
+  Carousel,
+  Badge,
+  Modal,
+  Nav,
+  Navbar,
+} from "react-bootstrap";
+import {
+  Calendar,
+  Clock,
+  MapPin,
+  Users,
+  Droplets,
+  Trophy,
+  Palette,
+  Music,
+  Camera,
+  Phone,
+  Star,
+  Send,
+  Check,
+  HelpCircle,
+  Sparkles,
+  MapPinned,
+  X,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+const ColonaVerano = () => {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxImage, setLightboxImage] = useState(0);
+  const [countdown, setCountdown] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
+  const [formData, setFormData] = useState({
+    childName: "",
+    age: "",
+    parentName: "",
+    phone: "",
+    email: "",
+    allergies: "",
+    message: "",
+  });
+
+  const galleryImages = [
+    {
+      url: "https://images.unsplash.com/photo-1566737236500-c8ac43014a67?w=800&h=600&fit=crop",
+      alt: "Niños jugando al fútbol",
+    },
+    {
+      url: "https://images.unsplash.com/photo-1530549387789-4c1017266635?w=800&h=600&fit=crop",
+      alt: "Natación en la pileta",
+    },
+    {
+      url: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop",
+      alt: "Actividades artísticas",
+    },
+    {
+      url: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&h=600&fit=crop",
+      alt: "Juegos grupales",
+    },
+    {
+      url: "https://images.unsplash.com/photo-1517164850305-99a3e65bb47e?w=800&h=600&fit=crop",
+      alt: "Actividades deportivas",
+    },
+    {
+      url: "https://images.unsplash.com/photo-1587280501635-68a0e82cd5ff?w=800&h=600&fit=crop",
+      alt: "Diversión al aire libre",
+    },
+  ];
+
+  const activities = [
+    {
+      icon: Droplets,
+      name: "Natación",
+      description: "Clases y juegos acuáticos",
+      color: "#0dcaf0",
+    },
+    {
+      icon: Trophy,
+      name: "Fútbol",
+      description: "Entrenamientos y partidos",
+      color: "#ffc107",
+    },
+    {
+      icon: Palette,
+      name: "Arte",
+      description: "Manualidades y pintura",
+      color: "#d63384",
+    },
+    {
+      icon: Music,
+      name: "Música",
+      description: "Canto y baile",
+      color: "#6f42c1",
+    },
+    {
+      icon: Users,
+      name: "Juegos Grupales",
+      description: "Dinámicas y teamwork",
+      color: "#198754",
+    },
+    {
+      icon: Camera,
+      name: "Fotografía",
+      description: "Capturando momentos",
+      color: "#fd7e14",
+    },
+  ];
+
+  const testimonials = [
+    {
+      name: "María González",
+      text: "Mi hijo no quería que termine el verano! La pasó increíble y aprendió a nadar. Los profes son excelentes.",
+      rating: 5,
+    },
+    {
+      name: "Carlos Rodríguez",
+      text: "Excelente organización, actividades variadas y un ambiente súper seguro. 100% recomendable!",
+      rating: 5,
+    },
+    {
+      name: "Laura Fernández",
+      text: "La mejor colonia de la zona. Mis dos hijos van hace 3 años y siempre quieren volver!",
+      rating: 5,
+    },
+  ];
+
+  const schedule = [
+    {
+      time: "9:00 - 9:30",
+      activity: "Llegada y Bienvenida",
+      icon: Users,
+      color: "#0d6efd",
+    },
+    {
+      time: "9:30 - 10:30",
+      activity: "Primera Actividad Deportiva",
+      icon: Trophy,
+      color: "#198754",
+    },
+    {
+      time: "10:30 - 11:00",
+      activity: "Merienda y Descanso",
+      icon: Clock,
+      color: "#ffc107",
+    },
+    {
+      time: "11:00 - 12:00",
+      activity: "Natación o Actividades Acuáticas",
+      icon: Droplets,
+      color: "#0dcaf0",
+    },
+    {
+      time: "12:00 - 13:00",
+      activity: "Talleres Creativos",
+      icon: Palette,
+      color: "#d63384",
+    },
+  ];
+
+  const pricingPlans = [
+    {
+      name: "Básico",
+      price: "$25.000",
+      period: "por mes",
+      features: [
+        "3 días semanales",
+        "Todas las actividades",
+        "Merienda incluida",
+        "Seguro de accidentes",
+      ],
+      popular: false,
+      variant: "primary",
+    },
+    {
+      name: "Premium",
+      price: "$40.000",
+      period: "por mes",
+      features: [
+        "5 días semanales",
+        "Todas las actividades",
+        "Merienda incluida",
+        "Seguro de accidentes",
+        "Material deportivo",
+        "Remera de la colonia",
+      ],
+      popular: true,
+      variant: "danger",
+    },
+    {
+      name: "Día Suelto",
+      price: "$10.000",
+      period: "por día",
+      features: [
+        "Un día a elección",
+        "Todas las actividades",
+        "Merienda incluida",
+        "Seguro de accidentes",
+      ],
+      popular: false,
+      variant: "success",
+    },
+  ];
+
+  useEffect(() => {
+    const targetDate = new Date("2025-12-01T00:00:00").getTime();
+    const interval = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+      setCountdown({
+        days: Math.floor(distance / (1000 * 60 * 60 * 24)),
+        hours: Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        ),
+        minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+        seconds: Math.floor((distance % (1000 * 60)) / 1000),
+      });
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    const message = `Hola! Quiero inscribir a mi hijo/a en la Colonia de Verano.\n\nDatos:\n- Niño/a: ${
+      formData.childName
+    }\n- Edad: ${formData.age} años\n- Padre/Madre: ${
+      formData.parentName
+    }\n- Teléfono: ${formData.phone}\n- Email: ${
+      formData.email
+    }\n- Alergias/Observaciones: ${
+      formData.allergies || "Ninguna"
+    }\n- Mensaje: ${formData.message || "Sin mensaje adicional"}`;
+    window.open(
+      `https://wa.me/5493865689114?text=${encodeURIComponent(message)}`,
+      "_blank"
+    );
+  };
+
+  const whatsappLink = `https://wa.me/5493865689114?text=${encodeURIComponent(
+    "Hola! Me gustaría inscribir a mi hijo/a en la Colonia de Verano. ¿Podrían brindarme más información?"
+  )}`;
+
+  const styles = {
+    heroSection: {
+      background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+      minHeight: "100vh",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      color: "white",
+      textAlign: "center",
+      position: "relative",
+      overflow: "hidden",
+    },
+    countdownSection: {
+      background: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+      padding: "3rem 0",
+      color: "white",
+    },
+    countdownBox: {
+      background: "rgba(255,255,255,0.2)",
+      borderRadius: "15px",
+      padding: "1.5rem",
+      backdropFilter: "blur(10px)",
+    },
+    activityCard: {
+      transition: "transform 0.3s ease, box-shadow 0.3s ease",
+      cursor: "pointer",
+      height: "100%",
+      border: "none",
+      boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+    },
+    timelineItem: {
+      display: "flex",
+      gap: "1.5rem",
+      marginBottom: "2rem",
+      alignItems: "flex-start",
+    },
+    timelineIcon: {
+      width: "60px",
+      height: "60px",
+      borderRadius: "50%",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      color: "white",
+      flexShrink: 0,
+    },
+    pricingCard: {
+      transition: "transform 0.3s ease",
+      height: "100%",
+      position: "relative",
+    },
+    whatsappButton: {
+      position: "fixed",
+      bottom: "20px",
+      right: "20px",
+      width: "60px",
+      height: "60px",
+      borderRadius: "50%",
+      backgroundColor: "#25d366",
+      border: "none",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
+      cursor: "pointer",
+      zIndex: 1000,
+      animation: "pulse 2s infinite",
+    },
+    galleryImage: {
+      width: "100%",
+      height: "250px",
+      objectFit: "cover",
+      borderRadius: "10px",
+      cursor: "pointer",
+      transition: "transform 0.3s ease",
+    },
+  };
+
+  return (
+    <div style={{ fontFamily: "system-ui, -apple-system, sans-serif" }}>
+      <style>{`
+        @keyframes pulse {
+          0%, 100% { transform: scale(1); }
+          50% { transform: scale(1.1); }
+        }
+        .activity-card:hover { transform: translateY(-10px); box-shadow: 0 12px 24px rgba(0,0,0,0.2); }
+        .pricing-card:hover { transform: translateY(-10px); }
+        .gallery-img:hover { transform: scale(1.05); }
+      `}</style>
+
+      {/* Navbar */}
+      <Navbar bg="primary" variant="dark" expand="lg" fixed="top">
+        <Container>
+          <Navbar.Brand
+            href="#home"
+            style={{ fontSize: "1.5rem", fontWeight: "bold" }}
+          >
+            🌞 Colonia Lemua
+          </Navbar.Brand>
+          <Navbar.Toggle />
+          <Navbar.Collapse className="justify-content-end">
+            <Button
+              variant="light"
+              href="#inscripcion"
+              style={{ fontWeight: "bold" }}
+            >
+              ¡Inscribite Ya!
+            </Button>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+
+      {/* Hero Carousel */}
+      <div style={{ marginTop: "56px" }}>
+        <Carousel>
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src="https://images.unsplash.com/photo-1566737236500-c8ac43014a67?w=1920&h=1080&fit=crop"
+              alt="Diversión garantizada"
+              style={{
+                height: "90vh",
+                objectFit: "cover",
+                filter: "brightness(0.7)",
+              }}
+            />
+            <Carousel.Caption style={{ bottom: "30%" }}>
+              <h1
+                style={{
+                  fontSize: "3.5rem",
+                  fontWeight: "bold",
+                  textShadow: "2px 2px 8px rgba(0,0,0,0.8)",
+                }}
+              >
+                ¡Diversión Garantizada!
+              </h1>
+              <p style={{ fontSize: "1.5rem", marginBottom: "2rem" }}>
+                Fútbol, natación y mucho más
+              </p>
+              <Button
+                variant="danger"
+                size="lg"
+                href="#inscripcion"
+                style={{ padding: "1rem 2rem", fontSize: "1.2rem" }}
+              >
+                <Sparkles size={24} style={{ marginRight: "10px" }} />
+                ¡Reservá tu Lugar!
+              </Button>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src="https://images.unsplash.com/photo-1530549387789-4c1017266635?w=1920&h=1080&fit=crop"
+              alt="Natación"
+              style={{
+                height: "90vh",
+                objectFit: "cover",
+                filter: "brightness(0.7)",
+              }}
+            />
+            <Carousel.Caption style={{ bottom: "30%" }}>
+              <h1
+                style={{
+                  fontSize: "3.5rem",
+                  fontWeight: "bold",
+                  textShadow: "2px 2px 8px rgba(0,0,0,0.8)",
+                }}
+              >
+                Refrescate en la Pileta
+              </h1>
+              <p style={{ fontSize: "1.5rem", marginBottom: "2rem" }}>
+                Clases de natación con profesionales
+              </p>
+              <Button
+                variant="danger"
+                size="lg"
+                href="#inscripcion"
+                style={{ padding: "1rem 2rem", fontSize: "1.2rem" }}
+              >
+                <Sparkles size={24} style={{ marginRight: "10px" }} />
+                ¡Reservá tu Lugar!
+              </Button>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1920&h=1080&fit=crop"
+              alt="Amigos"
+              style={{
+                height: "90vh",
+                objectFit: "cover",
+                filter: "brightness(0.7)",
+              }}
+            />
+            <Carousel.Caption style={{ bottom: "30%" }}>
+              <h1
+                style={{
+                  fontSize: "3.5rem",
+                  fontWeight: "bold",
+                  textShadow: "2px 2px 8px rgba(0,0,0,0.8)",
+                }}
+              >
+                Nuevos Amigos
+              </h1>
+              <p style={{ fontSize: "1.5rem", marginBottom: "2rem" }}>
+                Experiencias que duran toda la vida
+              </p>
+              <Button
+                variant="danger"
+                size="lg"
+                href="#inscripcion"
+                style={{ padding: "1rem 2rem", fontSize: "1.2rem" }}
+              >
+                <Sparkles size={24} style={{ marginRight: "10px" }} />
+                ¡Reservá tu Lugar!
+              </Button>
+            </Carousel.Caption>
+          </Carousel.Item>
+        </Carousel>
+      </div>
+
+      {/* Countdown */}
+      <div style={styles.countdownSection}>
+        <Container>
+          <h2
+            className="text-center mb-4"
+            style={{ fontSize: "2.5rem", fontWeight: "bold" }}
+          >
+            ¡Comienza en!
+          </h2>
+          <Row className="justify-content-center">
+            {Object.entries(countdown).map(([key, value]) => (
+              <Col xs={6} md={3} key={key} className="text-center mb-3">
+                <div style={styles.countdownBox}>
+                  <h1
+                    style={{ fontSize: "3rem", fontWeight: "bold", margin: 0 }}
+                  >
+                    {value}
+                  </h1>
+                  <p style={{ margin: 0, textTransform: "capitalize" }}>
+                    {key === "days"
+                      ? "Días"
+                      : key === "hours"
+                      ? "Horas"
+                      : key === "minutes"
+                      ? "Min"
+                      : "Seg"}
+                  </p>
+                </div>
+              </Col>
+            ))}
+          </Row>
+        </Container>
+      </div>
+
+      {/* Info Cards */}
+      <Container className="my-5 py-5">
+        <Row className="g-4">
+          <Col md={4}>
+            <Card
+              className="text-center h-100 shadow-sm"
+              style={{ border: "none" }}
+            >
+              <Card.Body className="p-4">
+                <Calendar size={64} color="#0d6efd" className="mb-3" />
+                <Card.Title style={{ fontSize: "1.8rem", fontWeight: "bold" }}>
+                  Días
+                </Card.Title>
+                <Card.Text style={{ fontSize: "1.1rem", color: "#6c757d" }}>
+                  Lunes, Miércoles y Viernes
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col md={4}>
+            <Card
+              className="text-center h-100 shadow-sm"
+              style={{ border: "none" }}
+            >
+              <Card.Body className="p-4">
+                <Clock size={64} color="#198754" className="mb-3" />
+                <Card.Title style={{ fontSize: "1.8rem", fontWeight: "bold" }}>
+                  Horario
+                </Card.Title>
+                <Card.Text style={{ fontSize: "1.1rem", color: "#6c757d" }}>
+                  9:00 AM - 1:00 PM
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col md={4}>
+            <Card
+              className="text-center h-100 shadow-sm"
+              style={{ border: "none" }}
+            >
+              <Card.Body className="p-4">
+                <MapPin size={64} color="#dc3545" className="mb-3" />
+                <Card.Title style={{ fontSize: "1.8rem", fontWeight: "bold" }}>
+                  Lugar
+                </Card.Title>
+                <Card.Text style={{ fontSize: "1.1rem", color: "#6c757d" }}>
+                  Quincho de Lemua
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
+
+      {/* Timeline */}
+      <div
+        style={{
+          background: "linear-gradient(135deg, #e0f7fa 0%, #e8f5e9 100%)",
+          padding: "5rem 0",
+        }}
+      >
+        <Container>
+          <h2
+            className="text-center mb-5"
+            style={{ fontSize: "2.5rem", fontWeight: "bold" }}
+          >
+            Un Día en la Colonia
+          </h2>
+          {schedule.map((item, index) => {
+            const Icon = item.icon;
+            return (
+              <div key={index} style={styles.timelineItem}>
+                <div style={{ ...styles.timelineIcon, background: item.color }}>
+                  <Icon size={30} />
+                </div>
+                <Card
+                  style={{
+                    flex: 1,
+                    border: "none",
+                    boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+                  }}
+                >
+                  <Card.Body>
+                    <Badge bg="primary" className="mb-2">
+                      {item.time}
+                    </Badge>
+                    <Card.Title style={{ fontSize: "1.3rem" }}>
+                      {item.activity}
+                    </Card.Title>
+                  </Card.Body>
+                </Card>
+              </div>
+            );
+          })}
+        </Container>
+      </div>
+
+      {/* Activities */}
+      <Container className="my-5 py-5">
+        <h2
+          className="text-center mb-5"
+          style={{ fontSize: "2.5rem", fontWeight: "bold" }}
+        >
+          Nuestras Actividades
+        </h2>
+        <Row className="g-4">
+          {activities.map((activity, index) => {
+            const Icon = activity.icon;
+            return (
+              <Col key={index} md={4}>
+                <Card className="activity-card" style={styles.activityCard}>
+                  <Card.Body className="p-4">
+                    <Icon size={56} color={activity.color} className="mb-3" />
+                    <Card.Title
+                      style={{ fontSize: "1.5rem", fontWeight: "bold" }}
+                    >
+                      {activity.name}
+                    </Card.Title>
+                    <Card.Text style={{ color: "#6c757d" }}>
+                      {activity.description}
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </Col>
+            );
+          })}
+        </Row>
+      </Container>
+
+      {/* Pricing */}
+      <div
+        id="precios"
+        style={{
+          background: "linear-gradient(135deg, #fff5f7 0%, #ffe6f0 100%)",
+          padding: "5rem 0",
+        }}
+      >
+        <Container>
+          <h2
+            className="text-center mb-4"
+            style={{ fontSize: "2.5rem", fontWeight: "bold" }}
+          >
+            Planes y Precios
+          </h2>
+          <p
+            className="text-center mb-5"
+            style={{ fontSize: "1.1rem", color: "#6c757d" }}
+          >
+            Elegí el plan que mejor se adapte a tus necesidades
+          </p>
+          <Row className="g-4">
+            {pricingPlans.map((plan, index) => (
+              <Col key={index} md={4}>
+                <Card
+                  className="pricing-card text-center h-100"
+                  style={{
+                    ...styles.pricingCard,
+                    border: plan.popular ? "3px solid #dc3545" : "none",
+                  }}
+                >
+                  {plan.popular && (
+                    <Badge
+                      bg="danger"
+                      style={{
+                        position: "absolute",
+                        top: "-15px",
+                        left: "50%",
+                        transform: "translateX(-50%)",
+                        fontSize: "0.9rem",
+                        padding: "0.5rem 1rem",
+                      }}
+                    >
+                      MÁS POPULAR
+                    </Badge>
+                  )}
+                  <Card.Body className="p-4">
+                    <Card.Title
+                      style={{
+                        fontSize: "2rem",
+                        fontWeight: "bold",
+                        marginBottom: "1.5rem",
+                      }}
+                    >
+                      {plan.name}
+                    </Card.Title>
+                    <div className="mb-4">
+                      <h2
+                        style={{
+                          fontSize: "3rem",
+                          fontWeight: "bold",
+                          color: plan.popular ? "#dc3545" : "#0d6efd",
+                        }}
+                      >
+                        {plan.price}
+                      </h2>
+                      <p style={{ color: "#6c757d" }}>{plan.period}</p>
+                    </div>
+                    <ul
+                      style={{
+                        listStyle: "none",
+                        padding: 0,
+                        textAlign: "left",
+                      }}
+                    >
+                      {plan.features.map((feature, i) => (
+                        <li
+                          key={i}
+                          className="mb-2"
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "10px",
+                          }}
+                        >
+                          <Check size={20} color="#198754" />
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <Button
+                      variant={plan.variant}
+                      size="lg"
+                      href="#inscripcion"
+                      className="w-100 mt-4"
+                    >
+                      Elegir Plan
+                    </Button>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+          <div className="text-center mt-4">
+            <Badge
+              bg="warning"
+              text="dark"
+              style={{ fontSize: "1rem", padding: "1rem 2rem" }}
+            >
+              💰 15% OFF por hermanos | 10% OFF pago adelantado
+            </Badge>
+          </div>
+        </Container>
+      </div>
+
+      {/* Team */}
+      <Container className="my-5 py-5">
+        <h2
+          className="text-center mb-5"
+          style={{ fontSize: "2.5rem", fontWeight: "bold" }}
+        >
+          Nuestro Equipo
+        </h2>
+        <Row className="g-4 justify-content-center">
+          <Col md={4}>
+            <Card className="text-center shadow-sm" style={{ border: "none" }}>
+              <Card.Body className="p-4">
+                <div
+                  style={{
+                    width: "100px",
+                    height: "100px",
+                    background:
+                      "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                    borderRadius: "50%",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    margin: "0 auto 1rem",
+                    color: "white",
+                    fontSize: "2rem",
+                    fontWeight: "bold",
+                  }}
+                >
+                  ML
+                </div>
+                <Card.Title style={{ fontSize: "1.5rem", fontWeight: "bold" }}>
+                  Marcos Lemoine
+                </Card.Title>
+                <Card.Text style={{ color: "#6c757d" }}>
+                  Profesor Principal
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col md={4}>
+            <Card className="text-center shadow-sm" style={{ border: "none" }}>
+              <Card.Body className="p-4">
+                <div
+                  style={{
+                    width: "100px",
+                    height: "100px",
+                    background:
+                      "linear-gradient(135deg, #11998e 0%, #38ef7d 100%)",
+                    borderRadius: "50%",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    margin: "0 auto 1rem",
+                    color: "white",
+                    fontSize: "2rem",
+                    fontWeight: "bold",
+                  }}
+                >
+                  ?
+                </div>
+                <Card.Title style={{ fontSize: "1.5rem", fontWeight: "bold" }}>
+                  Próximamente
+                </Card.Title>
+                <Card.Text style={{ color: "#6c757d" }}>Profesor/a</Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col md={4}>
+            <Card className="text-center shadow-sm" style={{ border: "none" }}>
+              <Card.Body className="p-4">
+                <div
+                  style={{
+                    width: "100px",
+                    height: "100px",
+                    background:
+                      "linear-gradient(135deg, #ff6a00 0%, #ee0979 100%)",
+                    borderRadius: "50%",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    margin: "0 auto 1rem",
+                    color: "white",
+                    fontSize: "2rem",
+                    fontWeight: "bold",
+                  }}
+                >
+                  ?
+                </div>
+                <Card.Title style={{ fontSize: "1.5rem", fontWeight: "bold" }}>
+                  Próximamente
+                </Card.Title>
+                <Card.Text style={{ color: "#6c757d" }}>Profesor/a</Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
+
+      {/* Testimonials */}
+      <div style={{ background: "#f8f9fa", padding: "5rem 0" }}>
+        <Container>
+          <h2
+            className="text-center mb-4"
+            style={{ fontSize: "2.5rem", fontWeight: "bold" }}
+          >
+            Lo Que Dicen los Padres
+          </h2>
+          <p
+            className="text-center mb-5"
+            style={{ fontSize: "1.1rem", color: "#6c757d" }}
+          >
+            Testimonios reales de familias que confiaron en nosotros
+          </p>
+          <Row className="g-4">
+            {testimonials.map((testimonial, index) => (
+              <Col key={index} md={4}>
+                <Card className="h-100 shadow-sm" style={{ border: "none" }}>
+                  <Card.Body className="p-4">
+                    <div className="text-center mb-3">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <Star
+                          key={i}
+                          size={20}
+                          fill="#ffc107"
+                          color="#ffc107"
+                        />
+                      ))}
+                    </div>
+                    <Card.Text
+                      className="text-center"
+                      style={{ fontStyle: "italic", marginBottom: "1rem" }}
+                    >
+                      "{testimonial.text}"
+                    </Card.Text>
+                    <Card.Text className="text-center fw-bold">
+                      - {testimonial.name}
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+        </Container>
+      </div>
+
+      {/* Gallery */}
+      <Container className="my-5 py-5">
+        <h2
+          className="text-center mb-5"
+          style={{ fontSize: "2.5rem", fontWeight: "bold" }}
+        >
+          Galería de Momentos
+        </h2>
+        <Row className="g-3">
+          {galleryImages.map((image, index) => (
+            <Col key={index} md={4} xs={6}>
+              <img
+                src={image.url}
+                alt={image.alt}
+                className="gallery-img"
+                style={styles.galleryImage}
+                onClick={() => {
+                  setLightboxImage(index);
+                  setLightboxOpen(true);
+                }}
+              />
+            </Col>
+          ))}
+        </Row>
+      </Container>
+
+      {/* FAQ */}
+      <div
+        style={{
+          background: "linear-gradient(135deg, #e0f2f1 0%, #e8eaf6 100%)",
+          padding: "5rem 0",
+        }}
+      >
+        <Container>
+          <h2
+            className="text-center mb-4"
+            style={{ fontSize: "2.5rem", fontWeight: "bold" }}
+          >
+            Preguntas Frecuentes
+          </h2>
+          <p
+            className="text-center mb-5"
+            style={{ fontSize: "1.1rem", color: "#6c757d" }}
+          >
+            Respondemos todas tus dudas sobre la colonia
+          </p>
+          <Accordion>
+            <Accordion.Item eventKey="0">
+              <Accordion.Header>
+                ¿Qué edades pueden participar?
+              </Accordion.Header>
+              <Accordion.Body>
+                La colonia está abierta para niños y niñas de 5 a 14 años,
+                organizados en grupos según edad.
+              </Accordion.Body>
+            </Accordion.Item>
+            <Accordion.Item eventKey="1">
+              <Accordion.Header>¿Qué deben traer los niños?</Accordion.Header>
+              <Accordion.Body>
+                Malla de baño, toalla, protector solar, gorra, ropa cómoda,
+                calzado deportivo y botella de agua. Nosotros proveemos la
+                merienda.
+              </Accordion.Body>
+            </Accordion.Item>
+            <Accordion.Item eventKey="2">
+              <Accordion.Header>¿Qué pasa si llueve?</Accordion.Header>
+              <Accordion.Body>
+                Contamos con espacios cubiertos para realizar actividades
+                alternativas como talleres, juegos de mesa y cine.
+              </Accordion.Body>
+            </Accordion.Item>
+            <Accordion.Item eventKey="3">
+              <Accordion.Header>¿Los niños deben saber nadar?</Accordion.Header>
+              <Accordion.Body>
+                No es necesario. Tenemos grupos para principiantes y avanzados
+                con supervisión constante.
+              </Accordion.Body>
+            </Accordion.Item>
+            <Accordion.Item eventKey="4">
+              <Accordion.Header>¿Hay descuentos?</Accordion.Header>
+              <Accordion.Body>
+                Sí! 15% de descuento por hermanos y 10% por pago adelantado del
+                mes completo.
+              </Accordion.Body>
+            </Accordion.Item>
+            <Accordion.Item eventKey="5">
+              <Accordion.Header>¿Cómo es la seguridad?</Accordion.Header>
+              <Accordion.Body>
+                Contamos con personal capacitado en primeros auxilios, seguro de
+                accidentes y supervisión permanente en todas las actividades.
+              </Accordion.Body>
+            </Accordion.Item>
+          </Accordion>
+        </Container>
+      </div>
+
+      {/* Map */}
+      <Container className="my-5 py-5">
+        <h2
+          className="text-center mb-4"
+          style={{ fontSize: "2.5rem", fontWeight: "bold" }}
+        >
+          ¿Dónde Estamos?
+        </h2>
+        <p
+          className="text-center mb-4"
+          style={{ fontSize: "1.1rem", color: "#6c757d" }}
+        >
+          <MapPinned
+            size={24}
+            color="#dc3545"
+            style={{ marginRight: "10px" }}
+          />
+          Quincho de Lemua, Tucumán
+        </p>
+        <div
+          style={{
+            borderRadius: "15px",
+            overflow: "hidden",
+            boxShadow: "0 8px 16px rgba(0,0,0,0.2)",
+          }}
+        >
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3541.0918846713625!2d-65.63840062376336!3d-27.435247015240627!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9423c5002058769b%3A0xa949e1caee95e901!2sQuincho%20de%20Lemua!5e0!3m2!1ses-419!2sar!4v1760483112186!5m2!1ses-419!2sar"
+            width="100%"
+            height="450"
+            style={{ border: 0 }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Ubicación Quincho de Lemua"
+          ></iframe>
+        </div>
+      </Container>
+
+      {/* Form */}
+      <div
+        id="inscripcion"
+        style={{
+          background: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+          padding: "5rem 0",
+        }}
+      >
+        <Container>
+          <h2
+            className="text-center mb-4 text-white"
+            style={{ fontSize: "2.5rem", fontWeight: "bold" }}
+          >
+            ¡Inscribí a tu Hijo/a Ahora!
+          </h2>
+          <p
+            className="text-center text-white mb-5"
+            style={{ fontSize: "1.1rem" }}
+          >
+            Completá el formulario y nos contactaremos a la brevedad
+          </p>
+          <Row className="justify-content-center">
+            <Col md={8} lg={6}>
+              <Card
+                style={{
+                  border: "none",
+                  borderRadius: "15px",
+                  boxShadow: "0 8px 24px rgba(0,0,0,0.3)",
+                }}
+              >
+                <Card.Body className="p-5">
+                  <Form onSubmit={handleFormSubmit}>
+                    <Row>
+                      <Col md={6}>
+                        <Form.Group className="mb-3">
+                          <Form.Label>Nombre del Niño/a *</Form.Label>
+                          <Form.Control
+                            type="text"
+                            required
+                            placeholder="Ej: Juan Pérez"
+                            value={formData.childName}
+                            onChange={(e) =>
+                              setFormData({
+                                ...formData,
+                                childName: e.target.value,
+                              })
+                            }
+                          />
+                        </Form.Group>
+                      </Col>
+                      <Col md={6}>
+                        <Form.Group className="mb-3">
+                          <Form.Label>Edad *</Form.Label>
+                          <Form.Control
+                            type="number"
+                            required
+                            min="5"
+                            max="14"
+                            placeholder="Ej: 8"
+                            value={formData.age}
+                            onChange={(e) =>
+                              setFormData({ ...formData, age: e.target.value })
+                            }
+                          />
+                        </Form.Group>
+                      </Col>
+                    </Row>
+
+                    <Form.Group className="mb-3">
+                      <Form.Label>Nombre del Padre/Madre *</Form.Label>
+                      <Form.Control
+                        type="text"
+                        required
+                        placeholder="Ej: María González"
+                        value={formData.parentName}
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            parentName: e.target.value,
+                          })
+                        }
+                      />
+                    </Form.Group>
+
+                    <Row>
+                      <Col md={6}>
+                        <Form.Group className="mb-3">
+                          <Form.Label>Teléfono *</Form.Label>
+                          <Form.Control
+                            type="tel"
+                            required
+                            placeholder="Ej: 3865-123456"
+                            value={formData.phone}
+                            onChange={(e) =>
+                              setFormData({
+                                ...formData,
+                                phone: e.target.value,
+                              })
+                            }
+                          />
+                        </Form.Group>
+                      </Col>
+                      <Col md={6}>
+                        <Form.Group className="mb-3">
+                          <Form.Label>Email</Form.Label>
+                          <Form.Control
+                            type="email"
+                            placeholder="Ej: maria@email.com"
+                            value={formData.email}
+                            onChange={(e) =>
+                              setFormData({
+                                ...formData,
+                                email: e.target.value,
+                              })
+                            }
+                          />
+                        </Form.Group>
+                      </Col>
+                    </Row>
+
+                    <Form.Group className="mb-3">
+                      <Form.Label>Alergias o Necesidades Especiales</Form.Label>
+                      <Form.Control
+                        as="textarea"
+                        rows={3}
+                        placeholder="Ej: Alergia al maní, usa lentes, etc."
+                        value={formData.allergies}
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            allergies: e.target.value,
+                          })
+                        }
+                      />
+                    </Form.Group>
+
+                    <Form.Group className="mb-4">
+                      <Form.Label>Mensaje Adicional</Form.Label>
+                      <Form.Control
+                        as="textarea"
+                        rows={3}
+                        placeholder="Cualquier consulta o comentario adicional"
+                        value={formData.message}
+                        onChange={(e) =>
+                          setFormData({ ...formData, message: e.target.value })
+                        }
+                      />
+                    </Form.Group>
+
+                    <div className="alert alert-info" role="alert">
+                      <HelpCircle size={20} style={{ marginRight: "10px" }} />
+                      Al enviar este formulario, serás redirigido a WhatsApp con
+                      todos los datos completados.
+                    </div>
+
+                    <Button
+                      variant="success"
+                      type="submit"
+                      size="lg"
+                      className="w-100"
+                    >
+                      <Send size={20} style={{ marginRight: "10px" }} />
+                      Enviar Inscripción por WhatsApp
+                    </Button>
+                  </Form>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+
+      {/* Footer */}
+      <footer
+        style={{ background: "#212529", color: "white", padding: "3rem 0" }}
+      >
+        <Container className="text-center">
+          <h3
+            style={{
+              fontSize: "2rem",
+              fontWeight: "bold",
+              marginBottom: "2rem",
+            }}
+          >
+            ¡Contactanos!
+          </h3>
+          <div className="mb-4">
+            <a
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                color: "#25d366",
+                textDecoration: "none",
+                fontSize: "1.2rem",
+              }}
+            >
+              <Phone size={24} style={{ marginRight: "10px" }} />
+              3865-689114
+            </a>
+          </div>
+          <p style={{ color: "#6c757d", margin: 0 }}>
+            © 2025 Colonia de Verano - Quincho de Lemua. Todos los derechos
+            reservados.
+          </p>
+        </Container>
+      </footer>
+
+      {/* WhatsApp Float Button */}
+      <a
+        href={whatsappLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={styles.whatsappButton}
+        aria-label="Contactar por WhatsApp"
+      >
+        <Phone size={28} color="white" />
+      </a>
+
+      {/* Lightbox Modal */}
+      <Modal
+        show={lightboxOpen}
+        onHide={() => setLightboxOpen(false)}
+        size="lg"
+        centered
+      >
+        <Modal.Body
+          style={{ padding: 0, background: "#000", position: "relative" }}
+        >
+          <Button
+            variant="light"
+            onClick={() => setLightboxOpen(false)}
+            style={{
+              position: "absolute",
+              top: "10px",
+              right: "10px",
+              zIndex: 10,
+            }}
+          >
+            <X size={24} />
+          </Button>
+          <Button
+            variant="light"
+            onClick={() =>
+              setLightboxImage(
+                (lightboxImage - 1 + galleryImages.length) %
+                  galleryImages.length
+              )
+            }
+            style={{
+              position: "absolute",
+              left: "10px",
+              top: "50%",
+              transform: "translateY(-50%)",
+              zIndex: 10,
+            }}
+          >
+            <ChevronLeft size={24} />
+          </Button>
+          <img
+            src={galleryImages[lightboxImage].url}
+            alt={galleryImages[lightboxImage].alt}
+            style={{
+              width: "100%",
+              height: "auto",
+              maxHeight: "80vh",
+              objectFit: "contain",
+            }}
+          />
+          <Button
+            variant="light"
+            onClick={() =>
+              setLightboxImage((lightboxImage + 1) % galleryImages.length)
+            }
+            style={{
+              position: "absolute",
+              right: "10px",
+              top: "50%",
+              transform: "translateY(-50%)",
+              zIndex: 10,
+            }}
+          >
+            <ChevronRight size={24} />
+          </Button>
+        </Modal.Body>
+      </Modal>
+    </div>
+  );
+};
+
+export default ColonaVerano;
