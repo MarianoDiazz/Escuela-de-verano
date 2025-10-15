@@ -93,6 +93,7 @@ export const teamMembers = [
         name: 'Marcos Lemoine',
         role: 'Profesor Principal - Educación Física',
         initials: 'ML',
+        image: 'https://avatars.githubusercontent.com/u/71349010?v=4',
         gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
     },
     {
