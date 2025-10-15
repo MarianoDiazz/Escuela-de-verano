@@ -6,7 +6,7 @@ import Countdown from "./components/CountDown";
 import ImportanceSection from "./components/ImportanceSection";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { TrendingUp } from "lucide-react";
-import Timeline from "./components/TimeLine";
+import Timeline from "./components/Timeline";
 import Pricing from "./components/Pricing";
 import InfoCards from "./components/InfoCards";
 import Team from "./components/Team";
