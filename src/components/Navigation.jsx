@@ -9,7 +9,7 @@ const Navigation = () => {
           href="#home"
           style={{ fontSize: "1.5rem", fontWeight: "bold" }}
         >
-          🌞 Colonia Lemua
+          🌞 Escuela de verano
         </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">

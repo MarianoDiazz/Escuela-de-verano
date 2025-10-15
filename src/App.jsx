@@ -38,9 +38,9 @@ function App() {
       <Hero />
       <Countdown />
       <ImportanceSection />
+      <InfoCards />
       <Timeline />
       <Pricing />
-      <InfoCards />
       <Activities />
       <Team />
       <Gallery />

@@ -4,17 +4,17 @@ import {
 } from 'lucide-react';
 
 export const galleryImages = [
-    { url: 'https://images.unsplash.com/photo-1566737236500-c8ac43014a67?w=800&h=600&fit=crop', alt: 'Juegos deportivos al aire libre' },
-    { url: 'https://images.unsplash.com/photo-1530549387789-4c1017266635?w=800&h=600&fit=crop', alt: 'Natación en la pileta' },
-    { url: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop', alt: 'Actividades artísticas' },
+    { url: 'https://images.unsplash.com/photo-1533222481259-ce20eda1e20b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170', alt: 'Juegos deportivos al aire libre' },
+    { url: 'https://plus.unsplash.com/premium_photo-1664475741639-f188534b599e?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170', alt: 'Natación en la pileta' },
+    { url: 'https://images.unsplash.com/photo-1622659097972-68f1d8c1829f?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1171', alt: 'Actividades artísticas' },
     { url: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&h=600&fit=crop', alt: 'Juegos en grupo' },
     { url: 'https://images.unsplash.com/photo-1517164850305-99a3e65bb47e?w=800&h=600&fit=crop', alt: 'Actividades deportivas' },
-    { url: 'https://images.unsplash.com/photo-1587280501635-68a0e82cd5ff?w=800&h=600&fit=crop', alt: 'Diversión en la naturaleza' }
+    { url: 'https://plus.unsplash.com/premium_photo-1687757693334-f6b600ceb88f?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1169', alt: 'Diversión en la naturaleza' }
 ];
 
 export const heroSlides = [
-    { url: 'https://images.unsplash.com/photo-1566737236500-c8ac43014a67?w=1920&h=1080&fit=crop', title: '¡Diversión y Aprendizaje!', subtitle: 'Desconectamos de las pantallas, conectamos con la naturaleza' },
-    { url: 'https://images.unsplash.com/photo-1530549387789-4c1017266635?w=1920&h=1080&fit=crop', title: 'Aprendé a Nadar', subtitle: 'Perdé el miedo al agua con profesionales' },
+    { url: 'https://images.unsplash.com/photo-1593103916129-87e179a70c1f?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170', title: '¡Diversión y Aprendizaje!', subtitle: 'Desconectamos de las pantallas, conectamos con la naturaleza' },
+    { url: 'https://images.unsplash.com/photo-1648090272983-440e86555e8e?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170', title: 'Aprendé a Nadar', subtitle: 'Perdé el miedo al agua con profesionales' },
     { url: 'https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?w=1920&h=1080&fit=crop', title: 'Conectá con la Naturaleza', subtitle: 'Actividades campamentiles y al aire libre' }
 ];
 
@@ -78,14 +78,14 @@ export const pricingPlans = [
         popular: true,
         variant: 'danger'
     },
-    {
-        name: 'Bebés (2-4 años)',
-        price: '$20.000',
-        period: 'por mes',
-        features: ['Martes y Jueves', '1 hora por día', 'Actividades adaptadas', 'Acompañamiento especial', 'Natación con padres'],
-        popular: false,
-        variant: 'info'
-    }
+    // {
+    //     name: 'Bebés (2-4 años)',
+    //     price: '$20.000',
+    //     period: 'por mes',
+    //     features: ['Martes y Jueves', '1 hora por día', 'Actividades adaptadas', 'Acompañamiento especial', 'Natación con padres'],
+    //     popular: false,
+    //     variant: 'info'
+    // }
 ];
 
 export const teamMembers = [
@@ -97,9 +97,9 @@ export const teamMembers = [
         gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
     },
     {
-        name: 'Próximamente',
-        role: 'Profesor/a',
-        initials: '?',
+        name: 'Gastón Gramajo',
+        role: 'Profesor de Educación Física',
+        initials: 'GM',
         gradient: 'linear-gradient(135deg, #11998e 0%, #38ef7d 100%)'
     },
     {

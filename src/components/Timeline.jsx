@@ -95,32 +95,6 @@ const Timeline = () => {
             icon="🌤️"
           />
         </Row>
-
-        {/* Night Activity */}
-        <Alert variant="dark" className="mt-4 text-center">
-          <h4 className="mb-3">
-            <Moon size={32} style={{ marginRight: "10px" }} />
-            Actividad Nocturna Especial
-          </h4>
-          <p className="mb-2">
-            <strong>Horario:</strong> {nightActivity.time}
-          </p>
-          <p className="mb-3">
-            <strong>Día:</strong> {nightActivity.day}
-          </p>
-          <div className="d-flex flex-wrap justify-content-center gap-2">
-            {nightActivity.activities.map((activity, index) => (
-              <Badge
-                key={index}
-                bg="warning"
-                text="dark"
-                style={{ fontSize: "0.9rem", padding: "0.5rem 1rem" }}
-              >
-                {activity}
-              </Badge>
-            ))}
-          </div>
-        </Alert>
       </Container>
     </div>
   );

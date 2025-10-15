@@ -29,7 +29,7 @@ const Map = () => {
         }}
       >
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28409.363076!2d-65.6461!3d-27.4354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjfCsDI2JzA3LjQiUyA2NcKwMzgnNDYuMCJX!5e0!3m2!1ses!2sar!4v1234567890"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3541.0918846713625!2d-65.63840062376336!3d-27.435247015240627!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9423c5002058769b%3A0xa949e1caee95e901!2sQuincho%20de%20Lemua!5e0!3m2!1ses-419!2sar!4v1760546023484!5m2!1ses-419!2sar"
           width="100%"
           height="450"
           style={{ border: 0 }}

@@ -130,12 +130,12 @@ const Pricing = () => {
             💰 15% OFF por hermanos | 10% OFF pago adelantado
           </Badge>
         </div>
-        <div className="text-center mt-3">
+        {/* <div className="text-center mt-3">
           <p className="text-muted" style={{ fontSize: "0.9rem" }}>
             * Para bebés, se solicita flotadores individuales para brazos (no
             incluidos)
           </p>
-        </div>
+        </div> */}
       </Container>
     </div>
   );
