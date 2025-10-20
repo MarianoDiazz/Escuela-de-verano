@@ -2,6 +2,10 @@
 import {
     Droplets, Trophy, Palette, Music, Users, Camera, Clock, TreePine, Tent, Sun, Moon
 } from 'lucide-react';
+import lemua from '../assets/lemua.jpg'
+import gaston from '../assets/gaston.jpg'
+import chica from '../assets/chica.jpg'
+import { image } from 'framer-motion/client';
 
 export const galleryImages = [
     { url: 'https://images.unsplash.com/photo-1533222481259-ce20eda1e20b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170', alt: 'Juegos deportivos al aire libre' },
@@ -93,20 +97,22 @@ export const teamMembers = [
         name: 'Marcos Lemoine',
         role: 'Profesor Principal - Educación Física',
         initials: 'ML',
-        image: 'https://avatars.githubusercontent.com/u/71349010?v=4',
+        image: lemua,
         gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
     },
     {
         name: 'Gastón Gramajo',
         role: 'Profesor de Educación Física',
         initials: 'GM',
-        gradient: 'linear-gradient(135deg, #11998e 0%, #38ef7d 100%)'
+        gradient: 'linear-gradient(135deg, #11998e 0%, #38ef7d 100%)',
+        image: gaston
     },
     {
         name: 'Próximamente',
         role: 'Profesor/a',
         initials: '?',
-        gradient: 'linear-gradient(135deg, #ff6a00 0%, #ee0979 100%)'
+        gradient: 'linear-gradient(135deg, #ff6a00 0%, #ee0979 100%)',
+        image: chica
     }
 ];
 
