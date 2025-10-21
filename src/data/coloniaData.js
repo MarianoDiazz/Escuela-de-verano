@@ -6,6 +6,7 @@ import lemua from '../assets/lemua.jpg'
 import gaston from '../assets/gaston.jpg'
 import chica from '../assets/chica.jpg'
 import { image } from 'framer-motion/client';
+import lemua1 from '../assets/lemua1.jpg'
 
 export const galleryImages = [
     { url: 'https://images.unsplash.com/photo-1533222481259-ce20eda1e20b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170', alt: 'Juegos deportivos al aire libre' },
@@ -90,7 +91,7 @@ export const teamMembers = [
         name: 'Marcos Lemoine',
         role: 'Profesor Principal - Educación Física',
         initials: 'ML',
-        image: lemua,
+        image: lemua1,
         gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
     },
     {
