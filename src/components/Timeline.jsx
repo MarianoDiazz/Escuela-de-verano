@@ -1,102 +1,81 @@
 // src/components/Timeline/Timeline.jsx
 import React from "react";
-import { Container, Card, Badge, Row, Col, Alert } from "react-bootstrap";
-import { Moon } from "lucide-react";
-import {
-  schedule,
-  scheduleAfternoon,
-  nightActivity,
-} from "../data/coloniaData";
+import { Container, Row, Col, Card, Badge } from "react-bootstrap";
+import { Sunrise, Sun } from "lucide-react";
+import { schedule, scheduleAfternoon } from "../data/coloniaData";
 
 const Timeline = () => {
-  const timelineItemStyle = {
-    display: "flex",
-    gap: "1.5rem",
-    marginBottom: "2rem",
-    alignItems: "flex-start",
-  };
+  const TimelineSection = ({ title, icon: Icon, data }) => (
+    <Col lg={6} className="mb-5">
+      <div className="text-center mb-4">
+        <Icon size={30} color="#007bff" className="me-2" />
+        <h3 className="fw-bold d-inline">{title}</h3>
+      </div>
 
-  const timelineIconStyle = {
-    width: "60px",
-    height: "60px",
-    borderRadius: "50%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    color: "white",
-    flexShrink: 0,
-  };
-
-  const TimelineSection = ({ title, scheduleData, icon }) => (
-    <Col lg={6} className="mb-4">
-      <h3 className="text-center mb-4 fw-bold">
-        {icon} {title}
-      </h3>
-      {scheduleData.map((item, index) => {
-        const Icon = item.icon;
-        return (
-          <div key={index} style={timelineItemStyle}>
-            <div style={{ ...timelineIconStyle, background: item.color }}>
-              <Icon size={28} />
-            </div>
+      <div className="d-flex flex-column gap-4">
+        {data.map((item, index) => {
+          const ActivityIcon = item.icon;
+          return (
             <Card
-              style={{
-                flex: 1,
-                border: "none",
-                boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
-              }}
+              key={index}
+              className="shadow-sm border-0 timeline-card"
+              style={{ overflow: "hidden" }}
             >
-              <Card.Body>
-                <Badge bg="primary" className="mb-2">
-                  {item.time}
-                </Badge>
-                <Card.Title style={{ fontSize: "1.2rem", marginBottom: 0 }}>
-                  {item.activity}
-                </Card.Title>
+              <Card.Body className="d-flex align-items-center">
+                <div
+                  className="rounded-circle d-flex align-items-center justify-content-center me-3 flex-shrink-0"
+                  style={{
+                    backgroundColor: item.color,
+                    width: "50px",
+                    height: "50px",
+                    color: "white",
+                  }}
+                >
+                  <ActivityIcon size={24} />
+                </div>
+                <div>
+                  <Badge bg="primary" className="mb-2">
+                    {item.time}
+                  </Badge>
+                  <Card.Title className="mb-0" style={{ fontSize: "1.1rem" }}>
+                    {item.activity}
+                  </Card.Title>
+                </div>
               </Card.Body>
             </Card>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </Col>
   );
 
   return (
-    <div
-      style={{
-        background: "linear-gradient(135deg, #e0f7fa 0%, #e8f5e9 100%)",
-        padding: "5rem 0",
-      }}
-    >
+    <section className="timeline-section py-5">
       <Container>
-        <h2
-          className="text-center mb-4"
-          style={{ fontSize: "2.5rem", fontWeight: "bold" }}
-        >
-          Un Día en la Escuela
-        </h2>
+        <h2 className="section-title text-center mb-4">Un Día en la Escuela</h2>
         <p
-          className="text-center mb-5 text-muted"
-          style={{ fontSize: "1.1rem" }}
+          className="text-center text-muted mb-5 mx-auto"
+          style={{ maxWidth: 700 }}
         >
-          Cada jornada está diseñada para combatir el sedentarismo y fomentar el
-          deporte
+          Nuestras jornadas están diseñadas para equilibrar el movimiento, el
+          aprendizaje y la diversión, promoviendo hábitos saludables desde la
+          mañana hasta la tarde.
         </p>
 
         <Row>
           <TimelineSection
             title="Turno Mañana"
-            scheduleData={schedule}
-            icon="🌅"
+            icon={Sunrise}
+            data={schedule}
           />
           <TimelineSection
             title="Turno Tarde"
-            scheduleData={scheduleAfternoon}
-            icon="🌤️"
+            icon={Sun}
+            data={scheduleAfternoon}
           />
         </Row>
       </Container>
-    </div>
+    </section>
   );
 };
 

@@ -1,23 +1,17 @@
+// src/components/Navigation.jsx
 import React from "react";
 import { Navbar, Container, Button } from "react-bootstrap";
 
 const Navigation = () => {
   return (
-    <Navbar bg="primary" variant="dark" expand="lg" fixed="top">
+    <Navbar expand="lg" fixed="top" className="navbar-custom">
       <Container>
-        <Navbar.Brand
-          href="#home"
-          style={{ fontSize: "1.5rem", fontWeight: "bold" }}
-        >
-          🌞 Escuela de verano
-        </Navbar.Brand>
-        <Navbar.Toggle />
-        <Navbar.Collapse className="justify-content-end">
-          <Button
-            variant="light"
-            href="#inscripcion"
-            style={{ fontWeight: "bold" }}
-          >
+        <Navbar.Brand href="#home">🌞 Escuela de Verano</Navbar.Brand>
+
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+
+        <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
+          <Button href="#inscripcion" className="btn-primary-custom">
             ¡Inscribite Ya!
           </Button>
         </Navbar.Collapse>

@@ -59,27 +59,6 @@ const InfoCards = () => {
           );
         })}
       </Row>
-
-      {/* Información adicional del predio */}
-      <Row className="mt-5">
-        <Col>
-          <Card className="bg-light border-0 shadow-sm">
-            <Card.Body className="p-4">
-              <h5 className="mb-3 text-center fw-bold">
-                📍 Ubicación Detallada
-              </h5>
-              <p className="text-center mb-2">
-                <strong>{contactInfo.fullAddress}</strong>
-              </p>
-              <p className="text-center text-muted mb-0">
-                Predio de {contactInfo.facilityInfo.size} con{" "}
-                {contactInfo.facilityInfo.surface} • A{" "}
-                {contactInfo.facilityInfo.nearRiver}
-              </p>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
     </Container>
   );
 };

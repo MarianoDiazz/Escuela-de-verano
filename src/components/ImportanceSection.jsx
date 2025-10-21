@@ -25,40 +25,29 @@ const ImportanceSection = () => {
     TrendingUp,
   ];
   const colors = [
-    "#dc3545",
-    "#198754",
-    "#28a745",
-    "#0dcaf0",
-    "#ffc107",
-    "#fd7e14",
-    "#6f42c1",
-    "#d63384",
+    "#ff7b00",
+    "#1eb2a6",
+    "#0077b6",
+    "#ff4d6d",
+    "#ffb703",
+    "#8338ec",
+    "#06d6a0",
+    "#f72585",
   ];
 
   return (
-    <div
-      style={{
-        background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-        padding: "5rem 0",
-        color: "white",
-      }}
-    >
+    <section className="importance-section">
       <Container>
-        <h2
-          className="text-center mb-4"
-          style={{ fontSize: "2.5rem", fontWeight: "bold" }}
-        >
+        <h2 className="section-title text-white">
           ¿Por Qué Es Importante Nuestra Escuela?
         </h2>
-        <p
-          className="text-center mb-5"
-          style={{ fontSize: "1.2rem", opacity: 0.9 }}
-        >
-          Como profesores de educación física, tenemos una tarea fundamental:{" "}
-          <br />
+
+        <p className="importance-subtitle">
+          Como profesores de educación física, creemos en una formación integral
+          que promueva la salud, el juego y los valores.
           <strong>
-            Sacar a los niños de las pantallas y fomentar el deporte para
-            combatir el sedentarismo
+            {" "}
+            Nuestra escuela impulsa movimiento, amistad y bienestar.{" "}
           </strong>
         </p>
 
@@ -66,48 +55,19 @@ const ImportanceSection = () => {
           {importancePoints.map((point, index) => {
             const Icon = icons[index];
             return (
-              <Col key={index} md={6} lg={3}>
-                <Card
-                  className="h-100 text-center"
-                  style={{
-                    background: "rgba(255,255,255,0.1)",
-                    backdropFilter: "blur(10px)",
-                    border: "1px solid rgba(255,255,255,0.2)",
-                    color: "white",
-                    transition: "transform 0.3s ease",
-                  }}
-                  onMouseEnter={(e) =>
-                    (e.currentTarget.style.transform = "translateY(-10px)")
-                  }
-                  onMouseLeave={(e) =>
-                    (e.currentTarget.style.transform = "translateY(0)")
-                  }
-                >
-                  <Card.Body className="p-4">
-                    <div
-                      style={{
-                        width: "70px",
-                        height: "70px",
-                        borderRadius: "50%",
-                        background: colors[index],
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        margin: "0 auto 1rem",
-                      }}
-                    >
-                      <Icon size={36} />
-                    </div>
-                    <Card.Title
-                      style={{
-                        fontSize: "1.2rem",
-                        fontWeight: "bold",
-                        marginBottom: "0.5rem",
-                      }}
-                    >
+              <Col key={index} sm={6} lg={3} className="d-flex">
+                <Card className="importance-card flex-fill">
+                  <div
+                    className="importance-icon"
+                    style={{ color: colors[index % colors.length] }}
+                  >
+                    <Icon size={36} />
+                  </div>
+                  <Card.Body>
+                    <Card.Title className="importance-title">
                       {point.title}
                     </Card.Title>
-                    <Card.Text style={{ fontSize: "0.9rem", opacity: 0.9 }}>
+                    <Card.Text className="importance-text">
                       {point.description}
                     </Card.Text>
                   </Card.Body>
@@ -117,7 +77,7 @@ const ImportanceSection = () => {
           })}
         </Row>
       </Container>
-    </div>
+    </section>
   );
 };
 

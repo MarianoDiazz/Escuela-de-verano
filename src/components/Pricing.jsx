@@ -1,143 +1,102 @@
 // src/components/Pricing/Pricing.jsx
 import React from "react";
-import { Container, Row, Col, Card, Button, Badge } from "react-bootstrap";
-import { Check } from "lucide-react";
-import { pricingPlans } from "../data/coloniaData";
+import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import {
+  Volleyball,
+  Users,
+  Waves,
+  ShieldCheck,
+  HeartHandshake,
+  SunMedium,
+} from "lucide-react";
 
 const Pricing = () => {
-  const pricingCardStyle = {
-    transition: "transform 0.3s ease",
-    height: "100%",
-    position: "relative",
-  };
+  const price = "$30.000 / mes";
+
+  const features = [
+    { icon: Volleyball, text: "Deportes y juegos grupales" },
+    { icon: Users, text: "Supervisión de profesores titulados" },
+    { icon: Waves, text: "Pileta y actividades acuáticas" },
+    { icon: ShieldCheck, text: "Cobertura médica y seguros" },
+    { icon: HeartHandshake, text: "Educación en valores y convivencia" },
+    { icon: SunMedium, text: "Ambiente al aire libre y natural" },
+  ];
+
+  const plans = [
+    { title: "Turno Mañana", schedule: "8:00 a 12:30", variant: "primary" },
+    { title: "Turno Tarde", schedule: "14:00 a 18:30", variant: "info" },
+  ];
 
   return (
-    <div
-      id="precios"
-      style={{
-        background: "linear-gradient(135deg, #fff5f7 0%, #ffe6f0 100%)",
-        padding: "5rem 0",
-      }}
-    >
+    <section id="precios" className="pricing-section py-5">
       <Container>
-        <h2
-          className="text-center mb-4"
-          style={{ fontSize: "2.5rem", fontWeight: "bold" }}
-        >
-          Planes y Precios
+        <h2 className="section-title text-center mb-4">
+          Vení a disfrutar el verano
         </h2>
         <p
-          className="text-center mb-5"
-          style={{ fontSize: "1.1rem", color: "#6c757d" }}
+          className="text-center text-muted mb-5 mx-auto"
+          style={{ maxWidth: 700 }}
         >
-          Elegí el turno y plan que mejor se adapte a tus necesidades
+          En la <strong>Escuela de Verano</strong> cada jornada es una aventura:
+          deportes, pileta, juegos, valores y amistad. Todo incluido en un solo
+          plan.
         </p>
+
+        {/* Sección de beneficios */}
+        <Row className="g-4 mb-5 justify-content-center">
+          {features.map((item, index) => {
+            const Icon = item.icon;
+            return (
+              <Col xs={6} md={4} key={index} className="text-center">
+                <div className="feature-card">
+                  <div className="feature-icon">
+                    <Icon size={32} />
+                  </div>
+                  <p>{item.text}</p>
+                </div>
+              </Col>
+            );
+          })}
+        </Row>
+
+        {/* Cards de precios */}
         <Row className="g-4 justify-content-center">
-          {pricingPlans.map((plan, index) => (
-            <Col key={index} md={6} lg={3}>
-              <Card
-                className="pricing-card text-center h-100"
-                style={{
-                  ...pricingCardStyle,
-                  border: plan.popular ? "3px solid #dc3545" : "none",
-                }}
-              >
-                {plan.popular && (
-                  <Badge
-                    bg="danger"
-                    style={{
-                      position: "absolute",
-                      top: "-15px",
-                      left: "50%",
-                      transform: "translateX(-50%)",
-                      fontSize: "0.8rem",
-                      padding: "0.4rem 1rem",
-                    }}
-                  >
-                    MÁS POPULAR
-                  </Badge>
-                )}
-                <Card.Body className="p-4">
-                  <Card.Title
-                    style={{
-                      fontSize: "1.5rem",
-                      fontWeight: "bold",
-                      marginBottom: "1.5rem",
-                    }}
-                  >
-                    {plan.name}
-                  </Card.Title>
-                  <div className="mb-4">
-                    <h2
-                      style={{
-                        fontSize: "2.5rem",
-                        fontWeight: "bold",
-                        color: plan.popular ? "#dc3545" : "#0d6efd",
-                      }}
-                    >
-                      {plan.price}
+          {plans.map((plan, index) => (
+            <Col key={index} md={6} lg={4}>
+              <Card className="plan-card text-center h-100 shadow-sm border-0">
+                <Card.Body className="p-5 d-flex flex-column justify-content-between">
+                  <div>
+                    <h3 className="fw-bold text-primary mb-3">{plan.title}</h3>
+                    <p className="text-muted mb-4">{plan.schedule}</p>
+                    <h2 className="fw-bold text-accent display-5 mb-4">
+                      {price}
                     </h2>
-                    <p style={{ color: "#6c757d", fontSize: "0.9rem" }}>
-                      {plan.period}
+                    <p className="text-muted small mb-4">
+                      Incluye todas las actividades, materiales y seguro.
                     </p>
                   </div>
-                  <ul
-                    style={{
-                      listStyle: "none",
-                      padding: 0,
-                      textAlign: "left",
-                      fontSize: "0.9rem",
-                    }}
-                  >
-                    {plan.features.map((feature, i) => (
-                      <li
-                        key={i}
-                        className="mb-2"
-                        style={{
-                          display: "flex",
-                          alignItems: "flex-start",
-                          gap: "8px",
-                        }}
-                      >
-                        <Check
-                          size={18}
-                          color="#198754"
-                          style={{ flexShrink: 0, marginTop: "2px" }}
-                        />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
                   <Button
                     variant={plan.variant}
                     size="lg"
                     href="#inscripcion"
-                    className="w-100 mt-4"
+                    className="fw-semibold w-100 rounded-pill plan-btn"
                   >
-                    Elegir Plan
+                    Inscribirme
                   </Button>
                 </Card.Body>
               </Card>
             </Col>
           ))}
         </Row>
+
+        {/* Descuento */}
         <div className="text-center mt-5">
-          <Badge
-            bg="warning"
-            text="dark"
-            style={{ fontSize: "1rem", padding: "1rem 2rem" }}
-          >
-            💰 15% OFF por hermanos | 10% OFF pago adelantado
-          </Badge>
+          <div className="discount-banner">
+            💰 <strong>15% OFF por hermanos</strong> | 10% OFF pago adelantado
+          </div>
         </div>
-        {/* <div className="text-center mt-3">
-          <p className="text-muted" style={{ fontSize: "0.9rem" }}>
-            * Para bebés, se solicita flotadores individuales para brazos (no
-            incluidos)
-          </p>
-        </div> */}
       </Container>
-    </div>
+    </section>
   );
 };
 

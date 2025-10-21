@@ -74,14 +74,7 @@ export const pricingPlans = [
         popular: false,
         variant: 'success'
     },
-    {
-        name: 'Completo + Nocturna',
-        price: '$45.000',
-        period: 'por mes',
-        features: ['Martes y Jueves', 'Ambos turnos', 'Actividad nocturna', 'Campamento incluido', 'Todas las actividades', 'Material deportivo', 'Remera de la escuela'],
-        popular: true,
-        variant: 'danger'
-    },
+
     // {
     //     name: 'Bebés (2-4 años)',
     //     price: '$20.000',
@@ -170,8 +163,8 @@ export const campingActivities = [
 ];
 
 export const contactInfo = {
-    phone: '3865689114',
-    whatsappNumber: '5493865689114',
+    phone: '3865266378',
+    whatsappNumber: '5493865266378',
     location: 'Aguilares, Tucumán',
     fullAddress: 'Barrio Los Callejones, camino al puente colgante',
     schedule: {

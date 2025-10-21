@@ -40,10 +40,10 @@ function App() {
       <ImportanceSection />
       <InfoCards />
       <Timeline />
+      <Team />
       <Pricing />
       <Activities />
-      <Team />
-      <Gallery />
+      {/* <Gallery /> */}
       <FAQ />
       <Map />
       <ContactForm />

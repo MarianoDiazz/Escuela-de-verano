@@ -1,6 +1,7 @@
 // src/components/Countdown/Countdown.jsx
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import { motion } from "framer-motion";
 
 const Countdown = () => {
   const [countdown, setCountdown] = useState({
@@ -27,13 +28,6 @@ const Countdown = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const countdownBoxStyle = {
-    background: "rgba(255,255,255,0.2)",
-    borderRadius: "15px",
-    padding: "1.5rem",
-    backdropFilter: "blur(10px)",
-  };
-
   const labels = {
     days: "Días",
     hours: "Horas",
@@ -42,34 +36,26 @@ const Countdown = () => {
   };
 
   return (
-    <div
-      style={{
-        background: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
-        padding: "3rem 0",
-        color: "white",
-      }}
-    >
+    <section className="countdown-section">
       <Container>
-        <h2
-          className="text-center mb-4"
-          style={{ fontSize: "2.5rem", fontWeight: "bold" }}
-        >
-          ¡Comienza en!
-        </h2>
+        <h2 className="section-title text-white mb-5">¡Comienza en!</h2>
         <Row className="justify-content-center">
-          {Object.entries(countdown).map(([key, value]) => (
+          {Object.entries(countdown).map(([key, value], index) => (
             <Col xs={6} md={3} key={key} className="text-center mb-3">
-              <div style={countdownBoxStyle}>
-                <h1 style={{ fontSize: "3rem", fontWeight: "bold", margin: 0 }}>
-                  {value}
-                </h1>
-                <p style={{ margin: 0 }}>{labels[key]}</p>
-              </div>
+              <motion.div
+                className="countdown-box"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+              >
+                <h1 className="countdown-number">{value}</h1>
+                <p className="countdown-label">{labels[key]}</p>
+              </motion.div>
             </Col>
           ))}
         </Row>
       </Container>
-    </div>
+    </section>
   );
 };
 
