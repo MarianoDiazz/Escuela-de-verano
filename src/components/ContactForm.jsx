@@ -156,7 +156,7 @@ const ContactForm = () => {
                     </Col>
                   </Row>
 
-                  <Form.Group className="mb-3">
+                  {/* <Form.Group className="mb-3">
                     <Form.Label>Plan de Interés</Form.Label>
                     <Form.Select
                       value={formData.selectedPlan}
@@ -174,12 +174,9 @@ const ContactForm = () => {
                       <option value="Turno Tarde">
                         Turno Tarde (17:00-19:00)
                       </option>
-                      {/* <option value="Completo + Nocturna">
-                        Completo + Nocturna
-                      </option>
-                      <option value="Bebés (2-4 años)">Bebés (2-4 años)</option> */}
+                      
                     </Form.Select>
-                  </Form.Group>
+                  </Form.Group> */}
 
                   <Form.Group className="mb-3">
                     <Form.Label>Alergias o Necesidades Especiales</Form.Label>

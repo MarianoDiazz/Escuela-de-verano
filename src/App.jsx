@@ -39,7 +39,7 @@ function App() {
       {/* <Countdown /> */}
       <ImportanceSection />
       <InfoCards />
-      <Timeline />
+      {/* <Timeline /> */}
       <Team />
       <Pricing />
       <Activities />

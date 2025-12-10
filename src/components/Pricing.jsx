@@ -22,9 +22,15 @@ const Pricing = () => {
     { icon: SunMedium, text: "Ambiente al aire libre y natural" },
   ];
 
+  // 🔁 Antes había Turno Mañana / Turno Tarde.
+  // Ahora solo mostramos una card aclarando que los horarios se confirman pronto.
   const plans = [
-    { title: "Turno Mañana", schedule: "8:00 a 12:30", variant: "primary" },
-    { title: "Turno Tarde", schedule: "14:00 a 18:30", variant: "info" },
+    {
+      title: "Horarios a confirmar",
+      schedule:
+        "Próximamente publicaremos los horarios de los turnos mañana y tarde. Podés preinscribirte y te avisamos apenas se definan.",
+      variant: "primary",
+    },
   ];
 
   return (
@@ -62,11 +68,13 @@ const Pricing = () => {
         {/* Cards de precios */}
         <Row className="g-4 justify-content-center">
           {plans.map((plan, index) => (
-            <Col key={index} md={6} lg={4}>
+            <Col key={index} md={8} lg={6}>
               <Card className="plan-card text-center h-100 shadow-sm border-0">
                 <Card.Body className="p-5 d-flex flex-column justify-content-between">
                   <div>
-                    <h3 className="fw-bold text-primary mb-3">{plan.title}</h3>
+                    <h3 className="fw-bold text-primary mb-3">
+                      {plan.title}
+                    </h3>
                     <p className="text-muted mb-4">{plan.schedule}</p>
                     <h2 className="fw-bold text-accent display-5 mb-4">
                       {price}
@@ -81,7 +89,7 @@ const Pricing = () => {
                     href="#inscripcion"
                     className="fw-semibold w-100 rounded-pill plan-btn"
                   >
-                    Inscribirme
+                    Preinscribirme
                   </Button>
                 </Card.Body>
               </Card>
@@ -92,7 +100,7 @@ const Pricing = () => {
         {/* Descuento */}
         <div className="text-center mt-5">
           <div className="discount-banner">
-            💰 <strong>15% OFF por hermanos</strong> | 10% OFF pago adelantado
+            💰 <strong>10% OFF pago adelantado</strong>
           </div>
         </div>
       </Container>

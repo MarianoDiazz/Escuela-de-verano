@@ -117,7 +117,7 @@ export const faqs = [
     },
     {
         question: '¿Qué días y horarios funcionan?',
-        answer: 'Martes y Jueves en dos turnos: Mañana de 9:30 a 11:30 hs y Tarde de 17:00 a 19:00 hs. Además hay una actividad nocturna opcional (campamento) de 20:00 a 22:00 hs un día a la semana.'
+        answer: 'Martes y Jueves. Además hay una actividad nocturna opcional (campamento) de 20:00 a 22:00 hs un día a la semana.'
     },
     {
         question: '¿Qué deben traer los niños?',
@@ -129,7 +129,7 @@ export const faqs = [
     },
     {
         question: '¿Hay descuentos?',
-        answer: 'Sí! 15% de descuento por hermanos y 10% por pago adelantado del mes completo.'
+        answer: 'Sí! 5% de descuento por hermanos y 10% por pago adelantado del mes completo.'
     },
     {
         question: '¿Qué medidas de seguridad tienen?',
@@ -164,14 +164,14 @@ export const campingActivities = [
 ];
 
 export const contactInfo = {
-    phone: '3865266378',
-    whatsappNumber: '5493865266378',
+    phone: '3865215955',
+    whatsappNumber: '5493865215955',
     location: 'Aguilares, Tucumán',
     fullAddress: 'Barrio Los Callejones, camino al puente colgante',
     schedule: {
         days: 'Martes y Jueves',
-        morning: '9:30 a 11:30 hs',
-        afternoon: '17:00 a 19:00 hs',
+        morning: 'a confirmar',
+        afternoon: 'a confirmar',
         night: '20:00 a 22:00 hs (actividad nocturna opcional)',
         babies: '1 hora (turno a coordinar)'
     },
