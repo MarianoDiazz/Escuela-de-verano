@@ -19,8 +19,8 @@ export const galleryImages = [
 ];
 
 export const heroSlides = [
-    { url: 'https://images.unsplash.com/photo-1593103916129-87e179a70c1f?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170', title: '¡Diversión y Aprendizaje!', subtitle: 'Desconectamos de las pantallas, conectamos con la naturaleza' },
     { url: pileta, title: 'Aprendé a Nadar', subtitle: 'Perdé el miedo al agua con profesionales' },
+    { url: 'https://images.unsplash.com/photo-1593103916129-87e179a70c1f?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170', title: '¡Diversión y Aprendizaje!', subtitle: 'Desconectamos de las pantallas, conectamos con la naturaleza' },
     { url: 'https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?w=1920&h=1080&fit=crop', title: 'Conectá con la Naturaleza', subtitle: 'Actividades campamentiles y al aire libre' }
 ];
 
