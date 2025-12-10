@@ -7,6 +7,7 @@ import gaston from '../assets/gaston.jpg'
 import chica from '../assets/chica.jpg'
 import { image } from 'framer-motion/client';
 import lemua1 from '../assets/lemua1.jpg'
+import pileta from '../assets/pileta.jpg'
 
 export const galleryImages = [
     { url: 'https://images.unsplash.com/photo-1533222481259-ce20eda1e20b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170', alt: 'Juegos deportivos al aire libre' },
@@ -19,7 +20,7 @@ export const galleryImages = [
 
 export const heroSlides = [
     { url: 'https://images.unsplash.com/photo-1593103916129-87e179a70c1f?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170', title: '¡Diversión y Aprendizaje!', subtitle: 'Desconectamos de las pantallas, conectamos con la naturaleza' },
-    { url: 'https://images.unsplash.com/photo-1648090272983-440e86555e8e?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170', title: 'Aprendé a Nadar', subtitle: 'Perdé el miedo al agua con profesionales' },
+    { url: pileta, title: 'Aprendé a Nadar', subtitle: 'Perdé el miedo al agua con profesionales' },
     { url: 'https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?w=1920&h=1080&fit=crop', title: 'Conectá con la Naturaleza', subtitle: 'Actividades campamentiles y al aire libre' }
 ];
 
@@ -164,8 +165,8 @@ export const campingActivities = [
 ];
 
 export const contactInfo = {
-    phone: '3865215955',
-    whatsappNumber: '5493865215955',
+    phone: '3865215975',
+    whatsappNumber: '5493865215975',
     location: 'Aguilares, Tucumán',
     fullAddress: 'Barrio Los Callejones, camino al puente colgante',
     schedule: {
