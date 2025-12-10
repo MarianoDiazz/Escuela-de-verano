@@ -70,7 +70,7 @@ const Hero = () => {
               >
                 <Button
                   href="#inscripcion"
-                  className="btn-primary-custom"
+                  className="btn-primary"
                   size="lg"
                 >
                   <Sparkles size={22} style={{ marginRight: "8px" }} />
