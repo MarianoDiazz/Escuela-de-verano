@@ -89,7 +89,7 @@ export const pricingPlans = [
 export const teamMembers = [
     {
         name: 'Marcos Lemoine',
-        role: 'Profesor Principal - Educación Física',
+        role: 'Profesor de Educación Física',
         initials: 'ML',
         image: lemua1,
         gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
@@ -102,8 +102,8 @@ export const teamMembers = [
         image: gaston
     },
     {
-        name: 'Próximamente',
-        role: 'Profesor/a',
+        name: 'Marianela Cabrera',
+        role: 'Profesora de Educación Física',
         initials: '?',
         gradient: 'linear-gradient(135deg, #ff6a00 0%, #ee0979 100%)',
         image: chica

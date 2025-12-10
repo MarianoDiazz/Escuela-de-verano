@@ -142,7 +142,7 @@ const ContactForm = () => {
                       </Form.Group>
                     </Col>
                     <Col md={6}>
-                      <Form.Group className="mb-3">
+                      {/* <Form.Group className="mb-3">
                         <Form.Label>Email</Form.Label>
                         <Form.Control
                           type="email"
@@ -152,7 +152,7 @@ const ContactForm = () => {
                             setFormData({ ...formData, email: e.target.value })
                           }
                         />
-                      </Form.Group>
+                      </Form.Group> */}
                     </Col>
                   </Row>
 
@@ -174,10 +174,10 @@ const ContactForm = () => {
                       <option value="Turno Tarde">
                         Turno Tarde (17:00-19:00)
                       </option>
-                      <option value="Completo + Nocturna">
+                      {/* <option value="Completo + Nocturna">
                         Completo + Nocturna
                       </option>
-                      <option value="Bebés (2-4 años)">Bebés (2-4 años)</option>
+                      <option value="Bebés (2-4 años)">Bebés (2-4 años)</option> */}
                     </Form.Select>
                   </Form.Group>
 

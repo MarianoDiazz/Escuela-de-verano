@@ -36,7 +36,7 @@ function App() {
       `}</style>
       <Navigation />
       <Hero />
-      <Countdown />
+      {/* <Countdown /> */}
       <ImportanceSection />
       <InfoCards />
       <Timeline />
